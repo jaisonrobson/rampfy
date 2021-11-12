@@ -4,6 +4,7 @@ import Row from '../../components/layout/Row'
 import Container from '../../components/layout/Container'
 
 import CountriesListGroup from '../../components/custom/CountriesListGroup'
+import CountriesChart from '../../components/custom/CountriesChart'
 
 const Content = () => {
 
@@ -26,7 +27,7 @@ const Content = () => {
                 </Col>
 
                 <Col display="flex" alignItems="center" justifyContent="center">
-                    Grafico
+                    <CountriesChart />
                 </Col>
             </Row>
         </Container>

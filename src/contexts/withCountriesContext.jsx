@@ -23,6 +23,7 @@ export const withCountriesContext = (WrappedComponent) => {
     const WithCountriesContext = (props) => {
         const initialState = {
             countries: [],
+            selectedCountries: [],
             loading: true,
         }
 
@@ -33,6 +34,10 @@ export const withCountriesContext = (WrappedComponent) => {
             setCountries: (state, value) => setState({
                 ...state,
                 countries: value,
+            }),
+            setSelectedCountries: (state, value) => setState({
+                ...state,
+                selectedCountries: value,
             }),
             setLoading: (state, value) => setState({
                 ...state,

@@ -22,7 +22,7 @@ class App extends React.Component {
     }
 
     render() {
-        const { countriesState: { loading } } = this.props
+        const { countriesState: { loading, selectedCountries } } = this.props
 
         return (
             !loading ? (

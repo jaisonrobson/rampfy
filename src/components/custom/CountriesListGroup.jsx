@@ -4,9 +4,10 @@ import { ListGroup as ReactstrapListGroup } from 'reactstrap'
 
 import { CountriesContext } from '../../contexts/withCountriesContext'
 import CountryListGroupItem from './CountryListGroupItem'
+import { withCountriesContextConsumer } from '../../contexts/withCountriesContext'
 
-const CountriesListGroup = (props) => {
-    const { countries } = useContext(CountriesContext)
+const CountriesListGroup = ({ countriesState }) => {
+    const { countries, setSelectedCountries } = countriesState
     const [selected, setSelected] = useState([])
 
     const selectCountry = (country) => {
@@ -16,7 +17,10 @@ const CountriesListGroup = (props) => {
 
         if (selected.length >= 4) return false
 
-        setSelected(_.concat(selected, country))
+        const newSelected = _.concat(selected, country)
+
+        setSelected(newSelected)
+        setSelectedCountries(countriesState, newSelected)
 
         return true
     }
@@ -25,6 +29,7 @@ const CountriesListGroup = (props) => {
         const newArray = _.filter(selected, (element) => element.country != country.country)
 
         setSelected(newArray)
+        setSelectedCountries(countriesState, newArray)
 
         return false
     }
@@ -47,4 +52,4 @@ const CountriesListGroup = (props) => {
     )
 }
 
-export default CountriesListGroup
+export default withCountriesContextConsumer(CountriesListGroup)
