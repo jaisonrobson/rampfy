@@ -1,30 +1,45 @@
-import React, { useEffect, useState } from 'react'
-
+import React from 'react'
+import { withCountriesContext, withCountriesContextConsumer } from '../../contexts/withCountriesContext'
 import Content from '../content/Content'
 
-const App = () => {
-    const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        setLoading(true)
+class App extends React.Component {
+    componentDidMount() {
+        const { countriesState: { setCountries, setLoading } } = this.props
+
+        setLoading(this.props.countriesState, true)
 
         fetch(`https://covid19-api.com/country/all?format=json`)
             .then((res) => res.json())
-            .then((countries) => {
+            .then(
+                (result) => {
 
-                setLoading(false)
-            })
-    }, [setLoading])
+                    // const payload = result.map((country) => ({
+                    //     ...country,
+                    //     selected: false,
+                    // }))
 
-    return (
-        !loading ? (
-            < div className="bg-secondary" >
-                <Content />
-            </div >
-        ) : (
-            <div>Carregando informações...</div>
+                    setCountries(this.props.countriesState, result)
+                    setLoading(this.props.countriesState, false)
+                },
+                (error) => {
+                }
+            )
+    }
+
+    render() {
+        const { countriesState: { loading } } = this.props
+
+        return (
+            !loading ? (
+                < div className="bg-secondary" >
+                    <Content />
+                </div >
+            ) : (
+                <div>Carregando informações...</div>
+            )
         )
-    )
+    }
 }
 
-export default App
+export default withCountriesContext(withCountriesContextConsumer(App))
