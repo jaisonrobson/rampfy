@@ -29,8 +29,6 @@ const CountriesListGroup = (props) => {
         return false
     }
 
-    console.log(`selected`, selected)
-
     return (
         <ReactstrapListGroup style={{ height: '100%' }}>
             {

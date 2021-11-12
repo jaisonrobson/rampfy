@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { CountriesContext } from '../../contexts/withCountriesContext'
+import React from 'react'
 import Col from '../../components/layout/Col'
 import Row from '../../components/layout/Row'
 import Container from '../../components/layout/Container'
@@ -7,10 +6,6 @@ import Container from '../../components/layout/Container'
 import CountriesListGroup from '../../components/custom/CountriesListGroup'
 
 const Content = () => {
-    const { loading, countries, setCountries, setLoading } = useContext(CountriesContext)
-
-    console.log(`loading`, loading)
-    console.log(`countries`, countries)
 
     return (
         <Container fluid width="100vw" height="100vh">

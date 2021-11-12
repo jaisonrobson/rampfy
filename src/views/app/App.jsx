@@ -13,12 +13,6 @@ class App extends React.Component {
             .then((res) => res.json())
             .then(
                 (result) => {
-
-                    // const payload = result.map((country) => ({
-                    //     ...country,
-                    //     selected: false,
-                    // }))
-
                     setCountries(this.props.countriesState, result)
                     setLoading(this.props.countriesState, false)
                 },
