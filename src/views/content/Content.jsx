@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import Col from '../../components/layout/Col'
 import Row from '../../components/layout/Row'
 import Container from '../../components/layout/Container'
 
+import { withReducerContext, ReducerContext } from '../../contexts/withReducerContext'
+
 const Content = () => {
+    const { dispatch, ...state } = useContext(ReducerContext)
+
     return (
         <Container fluid width="100vw" height="100vh">
             <Row height="100%" justifyContent="center!important">
@@ -16,7 +20,7 @@ const Content = () => {
                     boxShadow="5px 0px 20px 1px rgba(0,0,0,.35);"
                     backgroundColor="#9199a1"
                 >
-                    Paises
+                    fafa
                 </Col>
 
                 <Col display="flex" alignItems="center" justifyContent="center">
@@ -27,4 +31,4 @@ const Content = () => {
     )
 }
 
-export default Content
+export default withReducerContext(Content)
