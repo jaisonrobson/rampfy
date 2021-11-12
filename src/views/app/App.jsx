@@ -26,7 +26,7 @@ class App extends React.Component {
 
         return (
             !loading ? (
-                < div className="bg-secondary" >
+                < div >
                     <Content />
                 </div >
             ) : (
