@@ -4,11 +4,7 @@ import Col from '../../components/layout/Col'
 import Row from '../../components/layout/Row'
 import Container from '../../components/layout/Container'
 
-import { withReducerContext, ReducerContext } from '../../contexts/withReducerContext'
-
 const Content = () => {
-    const { dispatch, ...state } = useContext(ReducerContext)
-
     return (
         <Container fluid width="100vw" height="100vh">
             <Row height="100%" justifyContent="center!important">
@@ -31,4 +27,4 @@ const Content = () => {
     )
 }
 
-export default withReducerContext(Content)
+export default Content

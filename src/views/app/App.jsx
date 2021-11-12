@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { withReducerContext, ReducerContext } from '../../contexts/withReducerContext'
-import { fetchCovidStatistics } from '../../store/actions'
+import React, { useEffect, useState } from 'react'
 
 import Content from '../content/Content'
 
 const App = () => {
-    const { dispatch, ...state } = useContext(ReducerContext)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
+
         fetch(`https://covid19-api.com/country/all?format=json`)
             .then((res) => res.json())
             .then((countries) => {
-                console.log(`countries`, countries)
-                fetchCovidStatistics(dispatch, countries)
+
                 setLoading(false)
             })
-    }, [dispatch, loading /*, state.countriesStatus*/])
+    }, [setLoading])
 
     return (
         !loading ? (
@@ -29,4 +27,4 @@ const App = () => {
     )
 }
 
-export default withReducerContext(App)
+export default App
