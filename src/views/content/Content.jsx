@@ -1,13 +1,27 @@
 import React from 'react'
 
-import { Container, Row, Col } from 'reactstrap'
+import Col from '../../components/layout/Col'
+import Row from '../../components/layout/Row'
+import Container from '../../components/layout/Container'
 
 const Content = () => {
     return (
-        <Container fluid>
-            <Row>
-                <Col xs="2">Coluna 1</Col>
-                <Col >Coluna 2</Col>
+        <Container fluid width="100vw" height="100vh">
+            <Row height="100%" justifyContent="center!important">
+                <Col
+                    xs="2"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    boxShadow="5px 0px 20px 1px rgba(0,0,0,.35);"
+                    backgroundColor="#9199a1"
+                >
+                    Paises
+                </Col>
+
+                <Col display="flex" alignItems="center" justifyContent="center">
+                    Grafico
+                </Col>
             </Row>
         </Container>
     )
